@@ -1,5 +1,4 @@
 import Form from 'next/form'
-import Link from 'next/link';
 import SearchFormReset from './SearchFormReset';
 
 const SearchForm = () => {
@@ -9,10 +8,10 @@ const SearchForm = () => {
   
   return (
     
-    <Form action = "/" scroll = {false} classID='search-form'>
+    <Form action = "/" scroll = {false} className='search-form m-auto'>
         <input name = "query"
                defaultValue=""
-               className='search-input' 
+               className='input' 
                placeholder='Search posts...'
          />
 
@@ -22,7 +21,7 @@ const SearchForm = () => {
                     <SearchFormReset />
                 )}
 
-                <button type = "submit" className='text-white'>
+                <button type = "submit" className='text-white '>
                     S
                 </button>
          </div>
