@@ -1,53 +1,54 @@
 import { auth, signIn, signOut } from '@/auth'
-
 import Link from 'next/link';
 import React from 'react'
+import logo from '../../assets/logo.png'
+import Image from 'next/image';
 
 const NavBar = async () => {
-   
     const session = await auth();
 
-  return (
-    <div>
-        <nav className='flex  items-center  gap-4'>
-      
-         <div>
-            logo
-         </div>
+    return (
+        <div className='w-full px-12 py-2 bg-transparent text-white text-xl flex items-center justify-between'>
+            <nav className='flex items-center gap-4 w-full'>
 
-        <div className='flex items-center gap-4'>
-           {session && session?.user ? (
-              <>
-                 <Link href ="/blog/create">
-                 <span>create</span>
-                 </Link>
+               
+                <div>
+                    <Image src={logo} alt="logo" width={100} />
+                </div>
 
-                 <form action = {async() => {
-                    "use server";
+                
+                {session && session?.user ? (
+                    <div className='flex items-center gap-4'>
+                        <Link href="/blog/create">
+                            <span>Create</span>
+                        </Link>
+                        <Link href={`/user/${session?.user?.id}`}>
+                            <span>{session?.user?.name}</span>
+                        </Link>
+                    </div>
+                ) : null}
 
-                    await signOut({redirectTo: "/"});
-                 }}>
-                    <button>Logout</button>
-                 </form>
-
-                 <Link href = {`user/${session?.user?.id}`}>
-                    <span>{session?.user?.name}</span>
-                 </Link>
-              </>
-           ) : (
-              <form action = {async () => {
-                "use server";
-
-                await signIn('github');
-              }}>
-                <button type='submit'>Login</button>
-
-              </form>
-           )}
+             
+                <div className='ml-auto'>
+                    {session && session?.user ? (
+                        <form action={async () => {
+                            "use server";
+                            await signOut({ redirectTo: "/" });
+                        }}>
+                            <button>Logout</button>
+                        </form>
+                    ) : (
+                        <form action={async () => {
+                            "use server";
+                            await signIn('github');
+                        }}>
+                            <button type='submit'>Login</button>
+                        </form>
+                    )}
+                </div>
+            </nav>
         </div>
-        </nav>
-    </div>
-  )
+    );
 }
 
-export default NavBar
+export default NavBar;
