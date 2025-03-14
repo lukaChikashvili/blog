@@ -35,14 +35,14 @@ const NavBar = async () => {
                             "use server";
                             await signOut({ redirectTo: "/" });
                         }}>
-                            <button>Logout</button>
+                            <button className='button-33'>Logout</button>
                         </form>
                     ) : (
                         <form action={async () => {
                             "use server";
                             await signIn('github');
                         }}>
-                            <button type='submit'>Login</button>
+                            <button type='submit' className='button-33'>Login</button>
                         </form>
                     )}
                 </div>
