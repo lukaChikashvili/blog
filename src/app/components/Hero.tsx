@@ -1,4 +1,5 @@
 import React from 'react'
+import SearchForm from './SearchForm'
 
 const Hero = () => {
   return (
@@ -7,6 +8,8 @@ const Hero = () => {
 
     <h1 className='text-6xl text-center w-[80%] m-auto leading-tight '>
         Exploring the <span className = "text-green-400">Mind,</span> Code, and Language <span className='text-green-400'>—</span> One Post at a Time</h1>
+
+        <SearchForm />
     </div>
   )
 }
