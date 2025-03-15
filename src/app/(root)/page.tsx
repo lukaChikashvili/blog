@@ -1,18 +1,23 @@
-import { client } from "@/sanity/lib/client";
-import { BLOGS_QUERY } from "@/sanity/lib/queries";
-import Image from "next/image";
+
+
 import Hero from "../components/Hero";
+import SearchForm from "../components/SearchForm";
 
-export default async function Home() {
 
-  const posts = await client.fetch(BLOGS_QUERY);
+export default async function Home({searchParams}: {
+  searchParams: Promise<{ query?: string}>
+}) {
+  
+  const query = (await searchParams).query;
 
-  console.log(JSON.stringify(posts, null, 2))
+
 
   return (
    <>
      <Hero />
-
+     <div className="m-auto w-full flex items-center justify-center">
+     <SearchForm query = {query}  />
+     </div>
    </>
   );
 }

@@ -9,7 +9,7 @@ const SearchFormReset = () => {
         if(form) form.reset();
     }
   return (
-    <div>
+    <div className='w-full'>
       <button type = "submit" onClick={reset}>
                         <Link href = "/" className='text-white'>X</Link>
                     </button>
