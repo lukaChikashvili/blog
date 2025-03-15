@@ -2,7 +2,7 @@
 
 import { BLOGS_QUERY } from "@/sanity/lib/queries";
 import Hero from "../components/Hero";
-import PostCard from "../components/PostCard";
+import PostCard, { PostTypeCard } from "../components/PostCard";
 import SearchForm from "../components/SearchForm";
 import { client } from "@/sanity/lib/client";
 
@@ -12,8 +12,10 @@ export default async function Home({searchParams}: {
 }) {
   
   const query = (await searchParams).query;
+  const params = {search: query || null};
 
-  const posts = await client.fetch(BLOGS_QUERY);
+
+  const posts = await client.fetch(BLOGS_QUERY, params);
 
 
 console.log(posts)
@@ -29,9 +31,9 @@ console.log(posts)
          {query ? `Search results for "${query}"` : 'All Posts'} 
        </p>
 
-       <ul className="mt-7 ">
+       <ul className="mt-7 flex gap-12 ">
           {posts?.length > 0 ? (
-            posts.map((post: StartupTypeCard) => (
+            posts.map((post: PostTypeCard) => (
               <PostCard key={post?._id} post={post} />
             ))
           ) : (

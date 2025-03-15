@@ -1,14 +1,18 @@
+import { Author, Blog } from "@/sanity/types";
 import { EyeIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+
+export type PostTypeCard = Omit<Blog, "author"> & {author?: Author};
+
 
 const PostCard = ({ post }: { post: PostTypeCard }) => {
   const { _createdAt, views, author, title, category, _id, image, description } =
     post;
 
   return (
-    <li className="bg-gray-900 border border-gray-700 rounded-xl p-5 text-white shadow-lg hover:shadow-xl transition-shadow duration-300">
+    <li className="w-[400px] bg-gray-900 border border-gray-700 rounded-xl p-5 text-white shadow-lg hover:shadow-xl transition-shadow duration-300">
       
       <div className="flex justify-between items-center mb-3">
         <p className="text-sm text-gray-400">{_createdAt}</p>
