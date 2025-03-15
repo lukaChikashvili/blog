@@ -28,7 +28,7 @@ const PostCard = ({ post }: { post: PostTypeCard }) => {
           <Link href={`/user/${author?._id}`} className="hover:underline">
             <p className="text-sm font-medium text-gray-300">{author?.name}</p>
           </Link>
-          <Link href={`/startup/${_id}`} className="hover:underline">
+          <Link href={`/blogs/${_id}`} className="hover:underline">
             <h3 className="text-lg font-semibold mt-1">{title}</h3>
           </Link>
         </div>
@@ -43,12 +43,12 @@ const PostCard = ({ post }: { post: PostTypeCard }) => {
         </Link>
       </div>
 
-      <Link href={`/startup/${_id}`} className="block">
+      <Link href={`/blogs/${_id}`} className="block">
         <p className="text-sm text-gray-400 line-clamp-2 mb-4">{description}</p>
         <div className="w-full h-52 overflow-hidden rounded-lg">
           <img
             src={image}
-            alt="Startup"
+            alt="Blog"
             className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
           />
         </div>
@@ -58,7 +58,7 @@ const PostCard = ({ post }: { post: PostTypeCard }) => {
         <Link href={`/?query=${category?.toLowerCase()}`} className="text-sm text-green-400 hover:underline">
           {category}
         </Link>
-        <Link href={`/startup/${_id}`} className="px-4 py-2 bg-green-400 rounded-lg text-sm font-medium hover:bg-blue-500 transition">
+        <Link href={`/blogs/${_id}`} className="px-4 py-2 bg-green-400 rounded-lg text-sm font-medium hover:bg-blue-500 transition">
           Details
         </Link>
       </div>
