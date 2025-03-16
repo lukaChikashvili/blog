@@ -1,3 +1,4 @@
+
 import { client } from '@/sanity/lib/client';
 import { Blogs_BY_ID } from '@/sanity/lib/queries';
 import { author } from '@/sanity/schemaTypes/author';
@@ -6,17 +7,19 @@ import { notFound } from 'next/navigation';
 import React from 'react'
 import markdownit from 'markdown-it'
 
- const md = markdownit({ breaks: true });;
+ const md = markdownit({ html: true, breaks: true, linkify:true });
 
 const page = async ({ params }: { params: Promise<{id: string}>}) => {
 
     const id = (await params).id;
 
     const post = await client.fetch(Blogs_BY_ID, {id});
-
+    
     if(!post) return notFound();
 
     const parsedContent = md.render(post?.pitch || "");
+
+    console.log(parsedContent)
 
 
   return (
@@ -30,7 +33,7 @@ const page = async ({ params }: { params: Promise<{id: string}>}) => {
    </section>
 
    <div className='flex items-center justify-center mt-12 '>
-   <img src = {post.image} width = {1} height = {1} alt = "thumbnail" 
+   <img src = {post.image || "/fallback-thumbnail.jpg"} width = {1} height = {1} alt = "thumbnail" 
       className="w-[70%]  h-[20rem] rounded-xl object-cover" />
     </div>
 
@@ -40,7 +43,7 @@ const page = async ({ params }: { params: Promise<{id: string}>}) => {
 
 <div className='flex items-center gap-12 mt-12'>
     <div>
-      <Image src = {post.author?.image} alt = "avatar" width = {64} height = {64} className='rounded-full shadow-lg'/>
+      <Image src = {post.author?.image || "/fallback-avatar.png"} alt = "avatar" width = {64} height = {64} className='rounded-full shadow-lg'/>
 
     </div>
 
@@ -60,12 +63,12 @@ const page = async ({ params }: { params: Promise<{id: string}>}) => {
       
 </div>
 
-<div className='flex justify-center mt-12'>
+   <div className='flex justify-center mt-12 w-full'>
         {parsedContent ? (
-        <article
-        className="prose max-w-4xl font-work-sans break-all text-white "
-        dangerouslySetInnerHTML={{ __html: parsedContent }}
-      />
+         <article className=" prose prose-lg prose-invert  max-w-4xl break-words text-white">
+         <div dangerouslySetInnerHTML={{ __html: parsedContent }} className='text-white' />
+       </article>
+      
         ) : (
           <p>No details provided</p>
         )}

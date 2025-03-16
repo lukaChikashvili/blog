@@ -12,9 +12,9 @@ const NavBar = async () => {
             <nav className='flex items-center gap-4 w-full'>
 
                
-                <div>
-                    <Image src={logo} alt="logo" width={100} />
-                </div>
+                <Link href = "/">
+                    <Image src={logo} alt="logo" width={100}  />
+                </Link>
 
                 
                 {session && session?.user ? (

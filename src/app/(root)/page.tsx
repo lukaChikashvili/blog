@@ -37,7 +37,7 @@ console.log(posts)
               <PostCard key={post?._id} post={post} />
             ))
           ) : (
-            <p className="no-results">No startups found</p>
+            <p className="text-white">No Posts found</p>
           )}
         </ul>
      </section>

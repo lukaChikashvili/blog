@@ -1,11 +1,17 @@
-@import url('https://fonts.cdnfonts.com/css/strawberry-cocktail');
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+
 
 body {
     width: 100%;
     height: 100vh;
    background-color: #131010;
    font-family: 'Strawberry Cocktail', sans-serif;
+}
+
+.prose {
+   color: #fff;
 }
 
 
@@ -61,6 +67,7 @@ body {
 
 
 .back {
-  background-color: #00a814;
-  background-image: url("https://www.transparenttextures.com/patterns/use-your-illusion.png");
+  background-color: #578E7E;
+  background-image: url("https://www.transparenttextures.com/patterns/white-diamond.png");
+
 }
