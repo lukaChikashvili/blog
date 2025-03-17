@@ -16,6 +16,10 @@ const NavBar = async () => {
                     <Image src={logo} alt="logo" width={100}  />
                 </Link>
 
+
+                 <div>
+                    
+                 </div>
                 
                 {session && session?.user ? (
                     <div className='flex items-center gap-4'>
