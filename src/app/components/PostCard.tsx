@@ -34,8 +34,8 @@ const PostCard = ({ post }: { post: PostTypeCard }) => {
         </div>
         <Link href={`/user/${author?._id}`} className="shrink-0">
           <Image
-            src={author?.image!}
-            alt={author?.name!}
+            src={author?.image || "/fallback-avatar.png" }
+            alt={author?.name || "Author"}
             width={48}
             height={48}
             className="rounded-full border border-gray-600"
@@ -46,8 +46,10 @@ const PostCard = ({ post }: { post: PostTypeCard }) => {
       <Link href={`/blogs/${_id}`} className="block">
         <p className="text-sm text-gray-400 line-clamp-2 mb-4">{description}</p>
         <div className="w-full h-52 overflow-hidden rounded-lg">
-          <img
-            src={image}
+          <Image
+            src={image || "/fallback-avatar.png"}
+            width = {1}
+            height = {1}
             alt="Blog"
             className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
           />
