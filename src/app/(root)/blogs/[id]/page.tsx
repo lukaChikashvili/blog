@@ -7,7 +7,7 @@ import markdownit from 'markdown-it';
 
 const md = markdownit({ html: true, breaks: true, linkify: true });
 
-const page = async ({ params }: { params: { id: string } }) => {
+const page = async ({ params }: { params: Promise<{ id: string }> }) => {
   const id = (await params).id;
   const post = await client.fetch(Blogs_BY_ID, { id });
 
