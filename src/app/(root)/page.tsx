@@ -15,10 +15,9 @@ export default async function Home({searchParams}: {
   const params = {search: query || null};
 
 
-  const posts = await client.fetch(BLOGS_QUERY, params);
+  const posts: PostTypeCard[] = await client.fetch<PostTypeCard[]>(BLOGS_QUERY, params);
 
 
-console.log(posts)
 
   return (
    <>
@@ -32,13 +31,11 @@ console.log(posts)
        </p>
 
        <ul className="mt-7 flex gap-12 ">
-          {posts?.length > 0 ? (
-            posts.map((post: PostTypeCard) => (
-              <PostCard key={post?._id} post={post} />
-            ))
-          ) : (
-            <p className="text-white">No Posts found</p>
-          )}
+       {Array.isArray(posts) && posts.length > 0 ? (
+    posts.map((post) => <PostCard key={post._id} post={post} />)
+  ) : (
+    <p className="text-white">No Posts found</p>
+  )}
         </ul>
      </section>
      </div>
