@@ -23,9 +23,7 @@ const NavBar = async () => {
                 
                 {session && session?.user ? (
                     <div className='flex items-center gap-4'>
-                        <Link href="/blog/create">
-                            <span>Create</span>
-                        </Link>
+                        
                         <Link href={`/user/${session?.user?.id}`}>
                             <span>{session?.user?.name}</span>
                         </Link>
