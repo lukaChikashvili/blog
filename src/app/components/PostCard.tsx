@@ -48,8 +48,8 @@ const PostCard = ({ post }: { post: PostTypeCard }) => {
         <div className="w-full h-52 overflow-hidden rounded-lg">
           <Image
             src={image || "/fallback-avatar.png"}
-            width = {1}
-            height = {1}
+            width = {400}
+            height = {300}
             alt="Blog"
             className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
           />
