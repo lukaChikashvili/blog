@@ -49,7 +49,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
             <p className="text-gray-400">@{post.author?.username}</p>
           </div>
         </div>
-        <p className="text-green-400 font-semibold">{post.category}</p>
+        <p className="text-green-400 font-semibold button-33">{post.category}</p>
       </div>
 
     
