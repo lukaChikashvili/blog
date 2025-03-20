@@ -8,6 +8,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "**.fbcdn.net", 
       },
+      {
+        protocol: "https",
+        hostname: "cdn.sanity.io", 
+      },
     ],
   },
 };
