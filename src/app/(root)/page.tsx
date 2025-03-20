@@ -30,7 +30,7 @@ export default async function Home({searchParams}: {
          {query ? `Search results for "${query}"` : 'All Posts'} 
        </p>
 
-       <ul className="mt-7 flex flex-col lg:flex-row gap-12 ">
+       <ul className="mt-7 flex flex-col lg:flex-row gap-12 justify-center ">
        {Array.isArray(posts) && posts.length > 0 ? (
     posts.map((post) => <PostCard key={post._id} post={post} />)
   ) : (
