@@ -1,9 +1,11 @@
+
 import { client } from '@/sanity/lib/client';
 import { Blogs_BY_ID } from '@/sanity/lib/queries';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import markdownit from 'markdown-it';
+
 
 const md = markdownit({ html: true, breaks: true, linkify: true });
 
@@ -15,10 +17,13 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
 
   const parsedContent = md.render(post?.pitch || "");
 
+
+
+
   return (
     <>
    
-      <section className="w-full h-[17rem] back bg-green-400 flex flex-col gap-6 items-center justify-center px-4 text-center">
+      <section className="w-full h-[17rem] back bg-green-400 flex flex-col gap-6 items-center justify-center px-4 text-center" >
         <h1 className="w-full max-w-3xl text-3xl sm:text-4xl md:text-5xl uppercase text-white font-bold">
           {post.title}
         </h1>
@@ -55,7 +60,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
     
       <div className="flex justify-center mt-12 w-full px-4">
         {parsedContent ? (
-          <article className="prose prose-lg prose-invert max-w-4xl break-words text-white">
+          <article className=" prose prose-lg prose-invert   max-w-4xl break-words  ">
             <div dangerouslySetInnerHTML={{ __html: parsedContent }} />
           </article>
         ) : (

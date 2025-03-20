@@ -3,6 +3,7 @@ import Link from 'next/link';
 import React from 'react'
 import logo from '../../assets/logo.png'
 import Image from 'next/image';
+import ThemeToggle from './ThemeToggle';
 
 const NavBar = async () => {
     const session = await auth();
@@ -15,7 +16,7 @@ const NavBar = async () => {
                 <Link href = "/">
                     <Image src={logo} alt="logo" width={100}  />
                 </Link>
-
+                <ThemeToggle />
 
                  <div>
                     
